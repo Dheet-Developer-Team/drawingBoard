@@ -1,49 +1,46 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-    height: 100vh;
-    width: 100vw;
+body {
+  height: 100vh;
+  width: 100vw;
 }
 .controlpannel {
-    position: absolute;
-    display: flex;
-    top: 25vh;
-    left: 2vw;
-    /* height: 50vh;
+  position: absolute;
+  display: flex;
+  /* top: 25vh;
+  left: 2vw; */
+  /* height: 50vh;
     width: 6vw; */
-    box-shadow: 0px 0px 15px black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    z-index: 100;
-
+  box-shadow: 0px 0px 15px black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
 }
 button {
-    /* position: relative; */
-    margin: 10px;
-    padding: 10px 10px;
-    height: 40px;
-    top: 10px;
-    left: 10px;
-    text-align: center;
-    width: 5VW;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px royalblue;
-    background: #8787e6;
-    color: black;
-    cursor: pointer;
-    font: 2px'consolas';
-    transition: transfom 100px ease;
-    font-size: 100%;
-    z-index: 2;
+  /* position: relative; */
+  margin: 10px;
+  padding: 10px 10px;
+  height: 40px;
+  top: 10px;
+  left: 10px;
+  text-align: center;
+  width: 5vw;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px royalblue;
+  background: #8787e6;
+  color: black;
+  cursor: pointer;
+  font: 2px "consolas";
+  transition: transfom 100px ease;
+  font-size: 100%;
+  z-index: 2;
 }
 
-
-
- /* .penWidth {
+/* .penWidth {
     position: relative; //
     padding: 10px 10px;
     height: 40px;
@@ -64,23 +61,60 @@ button {
     font-size: 100%;
 }   */
 
-
-#pen-width{ 
-    /* display:none; */
-    text-align: center;
-    width: 60px;
-    cursor: pointer;
-    z-index: 2;
+#pen-width {
+  /* display:none; */
+  text-align: center;
+  width: 60px;
+  cursor: pointer;
+  z-index: 2;
 }
 
-#canvas{
-    position: relative;
-    border:2px solid red; 
-    background-color: white ;
-    /* z-index: -1; */
-    /* cursor:crosshair; */
+#canvas {
+  position: relative;
+  border: 2px solid red;
+  background-color: white;
+  /* z-index: -1; */
+  /* cursor:crosshair; */
 }
-button:active{
-    transform: scale(0.95);
+button:active {
+  transform: scale(0.95);
 }
-
+/* color */
+.colors {
+  /* position: absolute;
+  top: 400px; */
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  box-shadow: 0px 0px 15px royalblue;
+  background: #8787e6;
+  border-radius: 15px;
+  flex-direction: column;
+}
+.color-picker {
+  margin: 5px 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.color-selecter {
+  margin: 0.5rem 0;
+}
+input[type="color"] {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+/* color end */
