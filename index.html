@@ -8,9 +8,22 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="controlpannel"><button onclick="resize()">Reset</button></div>
+    <div id="container">
+        <div class="controlpannel">
+            <button onclick="resize()">Reset</button>
+            <button id='pen' onclick="pen()">pen</button>
+            <button id='save' onclick="save()">save</button>
+            <button id='undo' onclick="undo()">undo</button>
+            <button id='redo' onclick="redo()">redo</button>
+        </div>
+        <canvas id="canvas"></canvas>
+    </div>
     
-    <canvas id="canvas" width="1000px" height="1000px"></canvas>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
     <script src="script.js"></script>
     
 </body>
