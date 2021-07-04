@@ -75,28 +75,46 @@ function stop(event){
     }
 
     restore_array.push(ctx.getImageData(0,0,ctx.canvas.width,ctx.canvas.height));
-        index += 1;
+        index++;
     
-    console.log(restore_array);
+    console.log(index);
 }
 
 function undo(){
-    if(index <= 0)
+    if(index <= 0){
+        let temp = restore_array;
         resize();
+        restore_array = temp;
+    }
     else{
         index -= 1;
         ctx.putImageData(restore_array[index],0,0);
     }
+    console.log(index);
+
 }
 
 function redo(){
-    if(index != restore_array.length-1)
+    if(index < 0 || index != restore_array.length-1)
         index++;
+    console.log(restore_array);
+    
     ctx.putImageData(restore_array[index],0,0);
     console.log(index);
 }
+let is_erasing = false;
+function modify(){
+    if(is_erasing)
+        is_erasing = false;
+    else
+        is_erasing = true;
+    is_drawing = false;
+}
+
 function draw(e){
-    if(e.buttons !== 1 || !is_drawing){
+    // console.log('draw');
+    if((e.buttons !== 1 || !is_drawing) && !is_erasing ){
+        console.log(is_erasing);
         return;
     }
     ctx.beginPath();
@@ -106,10 +124,30 @@ function draw(e){
     var pen_width = document.getElementById('pen-width');
     ctx.lineWidth = pen_width.value;
 
-    ctx.moveTo(mousePos.x, mousePos.y);
-    mousePosition(e);
-    ctx.lineTo(mousePos.x, mousePos.y);
-    ctx.stroke();
+    if(is_drawing){
+        ctx.beginPath();
+        ctx.moveTo(mousePos.x, mousePos.y);
+        mousePosition(e);
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+     
+        }
+        else{
+            // console.log('inside');
+            // ctx.lineWidth = 50;
+            ctx.strokeStyle = document.getElementById('canvas').style.backgroundColor ? document.getElementById('canvas').style.backgroundColor : '#fff';
+            console.log(ctx.strokeStyle);        
+    
+            ctx.globalCompositeOperation="source-over";
+            
+            ctx.beginPath();
+            ctx.moveTo(mousePos.x, mousePos.y);
+            mousePosition(e);
+            ctx.lineTo(mousePos.x, mousePos.y);
+            ctx.stroke();
+    
+            };
+        
 }
 
 function onWidthElement(e){
