@@ -8,6 +8,7 @@ let index = -1;
 let clr = 'black';
 
 function pen() {
+    is_erasing = false;
     if (is_drawing) {
         is_drawing = false;
         canvas.style.cursor = "auto";
@@ -16,7 +17,7 @@ function pen() {
         is_drawing = true;
         canvas.style.cursor = "crosshair";
     }
-    console.log(is_drawing);
+    // console.log(is_drawing);
 }
 
 function textbox() {
@@ -26,7 +27,7 @@ function textbox() {
 
 function save() {
     let b = domtoimage.toBlob(document.getElementById('canvas'));
-    console.log(b);
+    // console.log(b);
     b.then(function (blob) {
         window.saveAs(blob, 'picture.png');
     })
@@ -62,8 +63,8 @@ function mousePosition(e) {
     mousePos.y = e.clientY - canvas.offsetTop;
 }
 function resize() {
-    ctx.canvas.width = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
+    ctx.canvas.width = window.innerWidth-6;
+    ctx.canvas.height = window.innerHeight-9;
 
     restore_array = [];
     index = -1;
@@ -78,7 +79,7 @@ function stop(event) {
     restore_array.push(ctx.getImageData(0,0,ctx.canvas.width,ctx.canvas.height));
         index++;
     
-    console.log(index);
+    // console.log(index);
 }
 
 function undo(){
@@ -91,70 +92,77 @@ function undo(){
         index -= 1;
         ctx.putImageData(restore_array[index], 0, 0);
     }
-    console.log(index);
+    // console.log(index);
 
 }
 
 function redo(){
     if(index < 0 || index != restore_array.length-1)
         index++;
-    console.log(restore_array);
+    // console.log(restore_array);
     
     ctx.putImageData(restore_array[index],0,0);
-    console.log(index);
+    // console.log(index);
 }
 
 function chengeColor(element) {
     // console.log(el);
     clr = element.style.backgroundColor;
-    console.log(element);
+    // console.log(element);
 }
 let is_erasing = false;
 function modify(){
+    is_drawing = false;
     if(is_erasing)
         is_erasing = false;
     else
         is_erasing = true;
-    is_drawing = false;
+
 }
 
 function draw(e){
-    // console.log('draw');
-    if((e.buttons !== 1 || !is_drawing) && !is_erasing ){
-        console.log(is_erasing);
+    // console.log(e.buttons);
+    if((e.buttons !== 1 || !is_drawing) && (!is_erasing || e.buttons !==1)){
+        // console.log(is_erasing);
         return;
     }
     ctx.beginPath();
     ctx.lineCap = 'round';
-    ctx.strokeStyle = clr;
+    // ctx.strokeStyle = clr;
 
     var pen_width = document.getElementById('pen-width');
     ctx.lineWidth = pen_width.value;
 
-    if(is_drawing){
+    if(is_drawing)
+        ctx.strokeStyle = clr;
+    else
+        ctx.strokeStyle = document.getElementById('canvas').style.backgroundColor ? document.getElementById('canvas').style.backgroundColor : '#fff';
+
+
+    // if(is_drawing){
         ctx.beginPath();
         ctx.moveTo(mousePos.x, mousePos.y);
         mousePosition(e);
         ctx.lineTo(mousePos.x, mousePos.y);
         ctx.stroke();
      
-        }
-        else{
-            // console.log('inside');
-            // ctx.lineWidth = 50;
-            ctx.strokeStyle = document.getElementById('canvas').style.backgroundColor ? document.getElementById('canvas').style.backgroundColor : '#fff';
-            console.log(ctx.strokeStyle);        
+    // }
+    // else{
+    //         // console.log('inside');
+    //         // ctx.lineWidth = 50;
+    //         ctx.strokeStyle = document.getElementById('canvas').style.backgroundColor ? document.getElementById('canvas').style.backgroundColor : '#fff';
+    //         // console.log(ctx.strokeStyle);        
     
-            ctx.globalCompositeOperation="source-over";
+    //         // ctx.globalCompositeOperation="source-over";
             
-            ctx.beginPath();
-            ctx.moveTo(mousePos.x, mousePos.y);
-            mousePosition(e);
-            ctx.lineTo(mousePos.x, mousePos.y);
-            ctx.stroke();
+    //         ctx.beginPath();
+    //         ctx.moveTo(mousePos.x, mousePos.y);
+    //         mousePosition(e);
+    //         ctx.lineTo(mousePos.x, mousePos.y);
+    //         ctx.stroke();
     
-            };
-        
+    // };
+
 }
 
 function onWidthElement(e) {
