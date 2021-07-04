@@ -40,6 +40,11 @@ function save(){
     //     })
     // })
 
+
+// let onValue = false;
+
+
+
 window.addEventListener('resize',resize);
 resize();
 let mousePos = {
@@ -97,9 +102,24 @@ function draw(e){
     ctx.beginPath();
     ctx.lineCap = 'round';
     ctx.strokeStyle = '#111'
-    ctx.lineWidth = 5;
+
+    var pen_width = document.getElementById('pen-width');
+    ctx.lineWidth = pen_width.value;
+
     ctx.moveTo(mousePos.x, mousePos.y);
     mousePosition(e);
     ctx.lineTo(mousePos.x, mousePos.y);
     ctx.stroke();
+}
+
+function onWidthElement(e){
+    var displayWidthBar = document.getElementById('pen-width');
+    displayWidthBar.style.display='block';
+    // setTimeout(() => {
+    //     displayWidthBar.style.display='none'; //tried to remove the bar after 5 sec but was not looking good
+    // }, 5000);
+}
+function removedfromWidth(e){
+    var displayWidthBar = document.getElementById('pen-width');
+    displayWidthBar.style.display='none';
 }

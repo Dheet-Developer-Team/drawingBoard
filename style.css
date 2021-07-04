@@ -28,7 +28,7 @@ button {
     top: 10px;
     left: 10px;
     text-align: center;
-    width: 62px;
+    width: 5VW;
     border: none;
     border-radius: 15px;
     box-shadow: 0px 0px 15px royalblue;
@@ -40,6 +40,39 @@ button {
     font-size: 100%;
     z-index: 2;
 }
+
+
+
+ /* .penWidth {
+    position: relative; //
+    padding: 10px 10px;
+    height: 40px;
+    width: 4VW;
+    top: 10px; //
+    left: 10px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 64px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px royalblue;
+    background: #8787e6;
+    font: 2px'consolas';
+    font-size: 100%;
+}   */
+
+
+#pen-width{ 
+    /* display:none; */
+    text-align: center;
+    width: 60px;
+    cursor: pointer;
+    z-index: 2;
+}
+
 #canvas{
     position: relative;
     border:2px solid red; 
