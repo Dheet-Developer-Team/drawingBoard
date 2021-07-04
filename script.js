@@ -45,8 +45,8 @@ function onWidthElement(e){
     var displayWidthBar = document.getElementById('pen-width');
     displayWidthBar.style.display='block';
     // setTimeout(() => {
-    //     displayWidthBar.style.display='none';
-    // }, 1000);
+    //     displayWidthBar.style.display='none'; //tried to remove the bar after 5 sec but was not looking good
+    // }, 5000);
 }
 function removedfromWidth(e){
     var displayWidthBar = document.getElementById('pen-width');
