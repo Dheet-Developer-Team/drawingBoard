@@ -5,18 +5,19 @@
     top: 25vh;
     left: 2vw;
     height: 50vh;
-    width: 6vw;
+    width: 7vw;
     box-shadow: 0px 0px 15px black;
     border-radius: 10px;
+    z-index: 2;
 }
 button {
-    position: relative;
+    position: absolute;
     padding: 10px 10px;
     height: 40px;
     top: 10px;
     left: 10px;
     text-align: center;
-    width: 62px;
+    width: 5VW;
     border: none;
     border-radius: 15px;
     box-shadow: 0px 0px 15px royalblue;
@@ -24,10 +25,45 @@ button {
     color: black;
     cursor: pointer;
     font: 2px'consolas';
-    transition: transfom 100px ease;
+    /* transition: transfom 100px ease; */
     z-index: 2;
     font-size: 100%;
 }
+
+
+
+.penWidth {
+    /* position: relative; */
+    padding: 10px 10px;
+    height: 40px;
+    width: 4VW;
+    /* top: 10px; */
+    left: 10px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 64px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px royalblue;
+    background: #8787e6;
+}
+
+
+#pen-width{ 
+    display:none;
+    text-align: center;
+    width: 62px;
+    color: black;
+    cursor: pointer;
+    font: 2px'consolas';
+    z-index: 2;
+    font-size: 100%;
+    
+}
+
 #canvas{
     border:2px solid red;
     cursor:crosshair;
