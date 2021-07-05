@@ -63,8 +63,8 @@ function mousePosition(e) {
     mousePos.y = e.clientY - canvas.offsetTop;
 }
 function resize() {
-    ctx.canvas.width = window.innerWidth-6;
-    ctx.canvas.height = window.innerHeight-9;
+    ctx.canvas.width = window.innerWidth-10;
+    ctx.canvas.height = window.innerHeight-98;
 
     restore_array = [];
     index = -1;
@@ -113,10 +113,14 @@ function chengeColor(element) {
 let is_erasing = false;
 function modify(){
     is_drawing = false;
-    if(is_erasing)
+    if(is_erasing){
         is_erasing = false;
-    else
+        canvas.style.cursor = "auto";
+    }
+    else{
         is_erasing = true;
+        canvas.style.cursor = "url(./images/e.png),auto"
+    }
 
 }
 
