@@ -6,7 +6,37 @@ let pen_button = document.querySelector('#pen');
 let restore_array = [];
 let index = -1;
 let clr = 'black';
+let t = 'white';
 
+function fun(){
+    let root = document.querySelector(':root');
+    let panel = document.querySelector('.controlpannel')
+    let navbar = document.querySelector('.navbar');
+    let text = document.querySelector('p');
+    let rs = getComputedStyle(root);
+    let c = rs.getPropertyValue('--canvas-color');
+    
+    if(c=='white'){
+        root.style.setProperty('--canvas-color','black');
+        panel.style.setProperty('--panel-color','greenyellow');
+        navbar.style.setProperty('--navbar-color','#FFEF9F')
+        text.style.setProperty('--text-color','#192A51');
+        text.innerHTML = 'BlackBoard';
+        clr = 'white';
+        t = 'black';
+    }else{
+        root.style.setProperty('--canvas-color','white')
+        panel.style.setProperty('--panel-color','rgb(196, 240, 240)');
+        navbar.style.setProperty('--navbar-color','#192A51')
+        text.style.setProperty('--text-color','#E2C044');
+        text.innerHTML = 'WhiteBoard';
+
+        clr = 'black';
+        t = 'white';
+        resize();
+    }
+
+}
 function pen() {
     is_erasing = false;
     if (is_drawing) {
@@ -123,6 +153,8 @@ function modify(){
     }
 
 }
+console.log(document.getElementById('canvas').style.backgroundColor);
+
 
 function draw(e){
     // console.log(e.buttons);
@@ -139,8 +171,14 @@ function draw(e){
 
     if(is_drawing)
         ctx.strokeStyle = clr;
-    else
-        ctx.strokeStyle = document.getElementById('canvas').style.backgroundColor ? document.getElementById('canvas').style.backgroundColor : '#fff';
+    else{
+        // ctx.strokeStyle = document.getElementById('canvas').style.backgroundColor ? document.getElementById('canvas').style.backgroundColor : '#fff';
+        // if(c=='white')
+        //     ctx.strokeStyle = c;
+        // else
+        //     ctx.strokeStyle = 'black';
+        ctx.strokeStyle = t;
+    }
 
 
     // if(is_drawing){
