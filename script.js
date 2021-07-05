@@ -9,14 +9,16 @@ let clr = 'black';
 let t = 'white';
 
 function fun(){
+    // resize();
     let root = document.querySelector(':root');
     let panel = document.querySelector('.controlpannel')
     let navbar = document.querySelector('.navbar');
     let text = document.querySelector('p');
     let rs = getComputedStyle(root);
     let c = rs.getPropertyValue('--canvas-color');
-    
+    resize();
     if(c=='white'){
+        
         root.style.setProperty('--canvas-color','black');
         panel.style.setProperty('--panel-color','greenyellow');
         navbar.style.setProperty('--navbar-color','#FFEF9F')
@@ -33,7 +35,6 @@ function fun(){
 
         clr = 'black';
         t = 'white';
-        resize();
     }
 
 }
@@ -47,7 +48,7 @@ function pen() {
         is_drawing = true;
         canvas.style.cursor = "crosshair";
     }
-    // console.log(is_drawing);
+    
 }
 
 function textbox() {
@@ -123,7 +124,6 @@ function undo(){
         ctx.putImageData(restore_array[index], 0, 0);
     }
     // console.log(index);
-
 }
 
 function redo(){
@@ -151,7 +151,6 @@ function modify(){
         is_erasing = true;
         canvas.style.cursor = "url(./images/e.png),auto"
     }
-
 }
 console.log(document.getElementById('canvas').style.backgroundColor);
 

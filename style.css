@@ -68,6 +68,7 @@ button {
   transition: transfom 100px ease;
   font-size: 100%;
   z-index: 2;
+  
 }
 
 /* .penWidth {
@@ -212,4 +213,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.clicked{
+  border: 2px solid black;
 }
